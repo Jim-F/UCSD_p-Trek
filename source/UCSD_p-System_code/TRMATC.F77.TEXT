@@ -1,0 +1,18 @@
+      LOGICAL FUNCTION MATCH(CHRSTR,LEN)
+      CHARACTER*2 CHRSTR(20)
+      CHARACTER*2 ITEM(120)
+      COMMON/SCNBF1/ITEM
+C
+      WRITE(*,'(''''\)')
+      MATCH = .FALSE.
+      DO 10 I=1,LEN
+      IF (CHRSTR(I).NE.ITEM(I)) THEN
+      WRITE(*,'(''''\)')
+      RETURN
+      ENDIF
+  10  CONTINUE
+C
+      MATCH = .TRUE.
+      WRITE(*,'(''''\)')
+      RETURN
+      END

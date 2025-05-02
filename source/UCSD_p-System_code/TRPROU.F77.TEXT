@@ -1,0 +1,32 @@
+$USES UCHEW IN TREK2A:TRCHEW.F77
+      SUBROUTINE PROUT(KOUNT)
+$INCLUDE COMP1A1:TREKCO.F77
+      CHARACTER*2 OLINE(120)
+      COMMON/MYBUF/OLINE
+      CALL CHEW
+      KNT=KOUNT/2
+C
+      IF (LUN.EQ.0) THEN
+      DO 10 I=1,KNT
+      WRITE(*,'(A2\)') OLINE(I)
+  10  CONTINUE
+      ELSEIF (LUN.EQ.8) THEN
+      DO 11 I=1,KNT
+      WRITE(8,'(A2\)') OLINE(I)
+  11  CONTINUE
+      ENDIF
+C
+      IF(KOUNT.GT.(KNT*2)) GO TO 20
+      GO TO 30
+  20  IF (LUN.EQ.0) THEN
+      WRITE(*,'(A1\)') OLINE(KNT+1)
+      ELSEIF (LUN.EQ.8) THEN
+      WRITE(8,'(A1\)') OLINE(KNT+1)
+      ENDIF
+  30  IF (LUN.EQ.0) THEN
+      WRITE(*,'('''')')
+      ELSEIF (LUN.EQ.8) THEN
+      WRITE(8,'('''')')
+      ENDIF
+      RETURN
+      END

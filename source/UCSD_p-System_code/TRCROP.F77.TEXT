@@ -1,0 +1,40 @@
+      LOGICAL FUNCTION CROP(COMMAN)
+      CHARACTER*2 ITEM(120)
+      COMMON/SCNBF1/ITEM
+      CHARACTER*2 COMMAN(8),IT
+      CHARACTER*1 KCO
+      INTEGER ICO
+      LOGICAL ALPHA
+      CHARACTER*1 NULL,BLANK
+      COMMON/CHARCO/NULL,BLANK
+      INTRINSIC ICHAR
+C
+      CROP = .FALSE.
+      IF (ITEM(1).NE.COMMAN(1)) THEN
+      WRITE(*,'(''''\)')
+      RETURN
+      ENDIF
+C
+      DO 10 I=2,8
+      IT=ITEM(I)
+      KCO=COMMAN(I)
+      ICO=ICHAR(KCO)
+      IF (IT.EQ.BLANK.OR.IT.EQ.NULL
+     + .OR..NOT.ALPHA(ICO)) GO TO 20
+      IF (IT.NE.COMMAN(I)) THEN
+      WRITE(*,'(''''\)')
+      RETURN
+      ENDIF
+  10  CONTINUE
+C
+  20  CROP = .TRUE.
+      WRITE(*,'(''''\)')
+      RETURN
+      END
+C
+      LOGICAL FUNCTION ALPHA(ICO)
+      INTEGER ICO
+      ALPHA=.FALSE.
+      IF(ICO.GE.65 .AND. ICO.LE.90) ALPHA=.TRUE.
+      RETURN
+      END

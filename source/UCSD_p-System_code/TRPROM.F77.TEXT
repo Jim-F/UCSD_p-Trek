@@ -1,0 +1,16 @@
+$USES UCHEW IN TREK2A:TRCHEW.F77
+      SUBROUTINE PROMPT(KOUNT)
+      CHARACTER*2 OLINE(120)
+      COMMON/MYBUF/OLINE
+      CALL CHEW
+      KNT=KOUNT/2
+      WRITE(*,'(1X\)')
+      DO 10 I=1,KNT
+      WRITE (*,'(A2\)') OLINE(I)
+  10  CONTINUE
+      IF(KOUNT.GT.(KNT*2)) GO TO 20
+      GO TO 30
+  20  WRITE(*,'(A1\)') OLINE(KNT+1)
+  30  WRITE(*,'('' ''\)')
+      RETURN
+      END

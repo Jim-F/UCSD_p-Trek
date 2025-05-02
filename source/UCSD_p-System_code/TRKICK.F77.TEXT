@@ -1,0 +1,27 @@
+      SUBROUTINE KICKIT(MSG,LEN)
+      CHARACTER*2 MSG(40)
+      KNT=LEN/2
+      DO 10 I=1,KNT
+      WRITE(*,'(A2\)') MSG(I)
+   10 CONTINUE
+      IF(LEN.GT.KNT*2) THEN
+      WRITE(*,'(A1\)') MSG(KNT+1)
+      ENDIF
+      CLOSE(1,STATUS='DELETE')
+      WRITE(*,'(''''\)')
+      RETURN
+      END
+C
+C
+      SUBROUTINE KICKM(MSG,LEN)
+      CHARACTER*2 MSG(40)
+      KNT=LEN/2
+      DO 10 I=1,KNT
+      WRITE(*,'(A2\)') MSG(I)
+   10 CONTINUE
+      IF(LEN.GT.KNT*2) THEN
+      WRITE(*,'(A1\)') MSG(KNT+1)
+      ENDIF
+      WRITE(*,'(''''\)')
+      RETURN
+      END

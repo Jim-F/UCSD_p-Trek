@@ -1,0 +1,17 @@
+      SUBROUTINE NUMOF(XX,D)
+      REAL XX
+      INTEGER D
+      CHARACTER*1 NUMBR(40)
+      COMMON/MYBUF/NUMBR
+C
+      OPEN(2, FILE='NUMBR.TEXT',STATUS='NEW')
+C
+      IF (D.EQ.1) WRITE(2,'(F10.1)') XX
+      IF (D.EQ.2) WRITE(2,'(F10.2)') XX
+C
+      ENDFILE(2)
+      REWIND(2)
+      READ(2,'(10A1)') (NUMBR(I),I=1,10)
+      CLOSE(2,STATUS='DELETE')
+      RETURN
+      END

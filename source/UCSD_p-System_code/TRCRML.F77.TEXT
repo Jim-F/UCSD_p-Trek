@@ -1,0 +1,25 @@
+$USES UCRAM IN TREK2A:TRCRAM.F77
+$USES UCRAMI IN TREK2A:TRCRAI.F77
+C
+      SUBROUTINE CRAMLO(KEY,IX,IY)
+      CHARACTER*160 ITEM
+      COMMON/SCNBF1/ITEM
+C
+      IF     (KEY .EQ. 1) THEN
+      ITEM=' QUADRANT'
+      CALL CRAM(9)
+      ELSEIF (KEY .EQ. 2) THEN
+      ITEM=' SECTOR'
+      CALL CRAM(7)
+      ENDIF
+C
+      ITEM=' '
+      CALL CRAM(1)
+      CALL CRAMI(IX,0)
+      ITEM=' - '
+      CALL CRAM(3)
+      CALL CRAMI(IY,0)
+C
+      WRITE(*,'(''''\)')
+      RETURN
+      END

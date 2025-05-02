@@ -1,0 +1,14 @@
+      SUBROUTINE NUMOI(II)
+      CHARACTER*1 NUMBR(40)
+      COMMON/MYBUF/NUMBR
+C
+      OPEN(2, FILE='NUMBR.TEXT',STATUS='NEW')
+C
+      WRITE(2,'(I10)') II
+C
+      ENDFILE(2)
+      REWIND(2)
+      READ(2,'(10A1)') (NUMBR(I),I=1,10)
+      CLOSE(2,STATUS='DELETE')
+      RETURN
+      END

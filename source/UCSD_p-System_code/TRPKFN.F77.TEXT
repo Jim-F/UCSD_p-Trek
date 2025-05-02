@@ -1,0 +1,16 @@
+      SUBROUTINE PACKFN(NAME,FNAME)
+      CHARACTER*1 NAME(12)
+      CHARACTER*12 FNAME
+C
+      OPEN(2, FILE='FNAME.TEXT',STATUS='NEW')
+      WRITE(2,'(12A1\)') (NAME(I),I=1,12)
+      ENDFILE(2)
+      REWIND(2)
+C
+      READ(2,'(A12)',END=10) FNAME
+  10  CONTINUE
+      CLOSE(2,STATUS='DELETE')
+C
+      WRITE(*,'(''''\)')
+      RETURN
+      END

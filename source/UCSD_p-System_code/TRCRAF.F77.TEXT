@@ -1,0 +1,56 @@
+$USES UNUMOF IN TREK2B:TRNUMF.F77
+      SUBROUTINE CRAMF(XX,W,D)
+      REAL XX
+      INTEGER W,D
+      CHARACTER*1 NUMBR(40)
+      COMMON/MYBUF/NUMBR
+      CHARACTER*1 NULL,BLANK
+      COMMON/CHARCO/NULL,BLANK
+      COMMON/CRMKNT/KCH
+      CHARACTER*1 NUMTMP(10)
+C
+      DO 5 I=1,10
+      NUMTMP(I)=BLANK
+   5  CONTINUE
+C
+      CALL NUMOF(XX,D)
+C
+      ILEN=0
+      J=10
+      DO 10 I=1,10
+      IF (NUMBR(J).EQ.BLANK) GO TO 15
+      J=J-1
+      ILEN=ILEN+1
+  10  CONTINUE
+C
+  15  J=J+1
+      IF (NUMBR(J).EQ.'.') THEN
+      NUMTMP(1)='0'
+      K=2
+      KLEN=ILEN+1
+      ELSE
+      K=1
+      KLEN=ILEN
+      ENDIF
+      DO 20 I=K,KLEN
+      NUMTMP(I)=NUMBR(J)
+      J=J+1
+  20  CONTINUE
+C
+      IDIFF=0
+      IF (W.GT.KLEN) THEN
+      IDIFF=W-KLEN
+      DO 25 I=1,IDIFF
+      WRITE(1,'(A1\)') BLANK
+      KCH=KCH+1
+  25  CONTINUE
+      ENDIF
+C
+      DO 30 I=1,KLEN
+      WRITE(1,'(A1\)') NUMTMP(I)
+      KCH=KCH+1
+  30  CONTINUE
+C
+      WRITE(*,'(''''\)')
+      RETURN
+      END

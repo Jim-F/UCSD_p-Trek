@@ -1,0 +1,176 @@
+      SUBROUTINE LDCOMN
+$INCLUDE COMP1A1:TREKCO.F77
+C
+      CHARACTER*2 DV1(15,4),DV2(15,4),DV3(15,4),DV4(15,2)
+      CHARACTER*2 CM1(8,9),CM2(8,9),CM3(8,5)
+      CHARACTER*2 RQ1(8,5),RQ2(8,5)
+C
+      COMMON/COMD/COMMAN
+      COMMON/SCNKH1/ICH
+      COMMON/CRMKNT/KCH
+C
+C      DEVICE LIST
+C
+C       DEVICES ARE:
+C       1.  S. R. SENSORS
+C       2.  L. R. SENSORS
+C       3.  PHASERS
+C       4.  PHOTON TUBES
+C       5.  LIFE SUPPORT
+C       6.  WARP ENGINES
+C       7.  IMPULSE ENGINES
+C       8.  SHIELDS
+C       9.  SUBSPACE RADIO
+C       10. SHUTTLE CRAFT
+C       11. COMPUTER
+C       12. TRANSPORTER
+C       13. SHIELD CONTROL
+C       14. DEATHRAY
+C
+      DATA DV1/'S','.',' ','R','.',' ','S','E','N','S','O','R','S',
+     1         ' ',' ',
+     2         'L','.',' ','R','.',' ','S','E','N','S','O','R','S',
+     3         ' ',' ',
+     4         'P','H','A','S','E','R','S',' ',' ',' ',' ',' ',' ',
+     5         ' ',' ',
+     6         'P','H','O','T','O','N',' ','T','U','B','E','S',' ',
+     7         ' ',' '/
+C
+      DATA DV2/'L','I','F','E',' ','S','U','P','P','O','R','T',' ',
+     1         ' ',' ',
+     2         'W','A','R','P',' ','E','N','G','I','N','E','S',' ',
+     3         ' ',' ',
+     4         'I','M','P','U','L','S','E',' ','E','N','G','I','N',
+     5         'E','S',
+     6         'S','H','I','E','L','D','S',' ',' ',' ',' ',' ',' ',
+     7         ' ',' '/
+C
+      DATA DV3/'S','U','B','S','P','A','C','E',' ','R','A','D','I',
+     1         'O',' ',
+     2         'S','H','U','T','T','L','E',' ','C','R','A','F','T',
+     3         ' ',' ',
+     4         'C','O','M','P','U','T','E','R',' ',' ',' ',' ',' ',
+     5         ' ',' ',
+     6         'T','R','A','N','S','P','O','R','T','E','R',' ',' ',
+     7         ' ',' '/
+C
+      DATA DV4/'S','H','I','E','L','D',' ','C','O','N','T','R','O',
+     1         'L',' ',
+     2         'D','E','A','T','H','R','A','Y',' ',' ',' ',' ',' ',
+     3         ' ',' '/
+C
+C     MASTER COMMAND LIST - INCLUDES ALL ABBREVIATABLE COMMANDS
+C
+      DATA CM1/'S','R','S','C','A','N',' ',' ',
+     1         'L','R','S','C','A','N',' ',' ',
+     2         'P','H','A','S','E','R','S',' ',
+     3         'P','H','O','T','O','N','S',' ',
+     4         'M','O','V','E',' ',' ',' ',' ',
+     5         'S','H','I','E','L','D','S',' ',
+     6         'D','O','C','K',' ',' ',' ',' ',
+     7         'D','A','M','A','G','E','S',' ',
+     8         'C','H','A','R','T',' ',' ',' '/
+C
+      DATA CM2/'I','M','P','U','L','S','E',' ',
+     1         'R','E','S','T',' ',' ',' ',' ',
+     2         'W','A','R','P',' ',' ',' ',' ',
+     3         'S','T','A','T','U','S',' ',' ',
+     4         'S','E','N','S','O','R','S',' ',
+     5         'O','R','B','I','T',' ',' ',' ',
+     6         'T','R','A','N','S','P','O','R',
+     7         'M','I','N','E',' ',' ',' ',' ',
+     8         'C','R','Y','S','T','A','L','S'/
+C
+      DATA CM3/'S','H','U','T','T','L','E',' ',
+     1         'P','L','A','N','E','T','S',' ',
+     2         'R','E','Q','U','E','S','T',' ',
+     3         'E','M','E','X','I','T',' ',' ',
+     4         'G','A','M','E',' ',' ',' ',' '/
+C
+C     REQUEST LIST (FOR SRSCAN, REQUEST, STATUS)
+C
+      DATA RQ1/'D','A','T','E',' ',' ',' ',' ',
+     1         'C','O','N','D','I','T','I','O',
+     2         'P','O','S','I','T','I','O','N',
+     3         'L','S','U','P','P','O','R','T',
+     4         'W','A','R','P','F','A','C','T'/
+C
+      DATA RQ2/'E','N','E','R','G','Y',' ',' ',
+     1         'T','O','R','P','E','D','O','E',
+     2         'S','H','I','E','L','D','S',' ',
+     3         'K','L','I','N','G','O','N','S',
+     4         'T','I','M','E',' ',' ',' ',' '/
+C
+C      FINISH LOADING DEVICE LIST
+C
+      DO 10 I=1,15
+      DO 11 J=1,4
+      DEVICE(I,J)=DV1(I,J)
+  11  CONTINUE
+      DO 12 J=1,4
+      DEVICE(I,J+4)=DV2(I,J)
+  12  CONTINUE
+      DO 13 J=1,4
+      DEVICE(I,J+8)=DV3(I,J)
+  13  CONTINUE
+      DO 14 J=1,2
+      DEVICE(I,J+12)=DV4(I,J)
+  14  CONTINUE
+  10  CONTINUE
+C
+C      FINISH LOADING COMMAND LIST
+C
+      DO 20 I=1,8
+      DO 21 J=1,9
+      COMMAN(I,J)=CM1(I,J)
+  21  CONTINUE
+      DO 22 J=1,9
+      COMMAN(I,J+9)=CM2(I,J)
+  22  CONTINUE
+      DO 23 J=1,5
+      COMMAN(I,J+18)=CM3(I,J)
+  23  CONTINUE
+  20  CONTINUE
+C
+C      FINISH LOADING REQUEST LIST
+C
+      DO 30 I=1,8
+      DO 31 J=1,5
+      REQUST(I,J)=RQ1(I,J)
+  31  CONTINUE
+      DO 32 J=1,5
+      REQUST(I,J+5)=RQ2(I,J)
+  32  CONTINUE
+  30  CONTINUE
+C
+C       ALPHANUMERIC DATA
+C
+      IHEOL= 'EO'
+      IHREAL='RE'
+      IHALPH='AL'
+      IHS=   'S '
+      IHR=   'R '
+      IHC=   'C '
+      IHK=   'K '
+      IHGREE='GR'
+      IHRED= 'RE'
+      IHYELL='YE'
+      IHDOCK='DO'
+      IHE=   'E '
+      IHF=   'F '
+      IHBLAN='  '
+      IHDOT= '. '
+      IHQUES='? '
+      IHP=   'P '
+      IHSTAR='* '
+      IHB=   'B '
+      IHT=   'T '
+      IHNUM= '# '
+      IHAT=  '@ '
+      IH0=   '0 '
+C
+      ICH=120
+      KCH=0
+C
+      RETURN
+      END

@@ -1,0 +1,247 @@
+$USES UPROUT IN TREK2A:TRPROU.F77
+$USES USKIP IN TREK2A:TRSKIP.F77
+$USES UPROMPT IN TREK2A:TRPROM.F77
+$USES UCRAM IN TREK2A:TRCRAM.F77
+$USES UCRAMI IN TREK2A:TRCRAI.F77
+$USES UCREND IN TREK2A:TRCREN.F77
+$USES UCRAMDM IN TREK2A:TRCRDM.F77
+$USES UCRAMS1 IN TREK2B:TRCRAS.F77
+$USES UCRAMF IN TREK2B:TRCRAF.F77
+$USES DATE IN TREK2A:TRDATE.PAS
+C
+      SUBROUTINE PLAQUE
+$INCLUDE COMP1B1:TREKCO.F77
+      CHARACTER*240 OLINE
+      COMMON/MYBUF/OLINE
+      CHARACTER*240 ITEM
+      COMMON/SCNBF1/ITEM
+      CHARACTER*1 NULL,BLANK
+      COMMON/CHARCO/NULL,BLANK
+      CHARACTER*1 NAME(30)
+      INTEGER STRDAT(13)
+      INTRINSIC ICHAR,CHAR
+C
+ 11   OLINE='ENTER NAME (UP TO 30 CHARACTERS): '
+      CALL PROMPT(34)
+      DO 20 I=1,30
+      NAME(I)=BLANK
+ 20   CONTINUE
+      READ(*,21,END=11) NAME
+ 21   FORMAT (30A1)
+      NAMELE=30
+      DO 22 I=1,30
+      IF(NAME(NAMELE).NE.BLANK) GO TO 23
+      NAMELE=NAMELE-1
+ 22   CONTINUE
+ 23   NSKIP=65-NAMELE/2
+      OPEN (8, FILE='PRINTER:')
+      LUN=8
+      CALL SKIP(4)
+C
+C--------DRAW ENTERPRISE PICTURE.
+C
+      OLINE='
+     +                                                         
+     +       EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+     +'
+      CALL PROUT(114)
+      OLINE='
+     +                                      EEE                
+     +      E  : :                                         :  E
+     +'
+      CALL PROUT(114)
+      OLINE='
+     +                                    EE   EEE             
+     +      E  : :                   NCC-1701              :  E
+     +'
+      CALL PROUT(114)
+      OLINE='
+     +                    EEEEEEEEEEEEEEEE        EEEEEEEEEEEEE
+     +EE    E  : :                                         : E 
+     +'
+      CALL PROUT(114)
+      OLINE='
+     +                     E                                   
+     +  E    EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+     +'
+      CALL PROUT(112)
+      OLINE='
+     +                      EEEEEEEEE               EEEEEEEEEEE
+     +EE                 E  E 
+     +'
+      CALL PROUT(81)
+      OLINE='
+     +                               EEEEEEE   EEEEE    E      
+     +    E              E  E 
+     +'
+      CALL PROUT(81)
+      OLINE='
+     +                                      EEE           E    
+     +      E            E  E 
+     +'
+      CALL PROUT(81)
+      OLINE='
+     +                                                       E 
+     +        E          E  E 
+     +'
+      CALL PROUT(81)
+      OLINE='
+     +                                                         
+     +EEEEEEEEEEEEE      E  E 
+     +'
+      CALL PROUT(81)
+      OLINE='
+     +                                                      EEE
+     + :           EEEEEEE  EEEEEEEE
+     +'
+      CALL PROUT(87)
+      OLINE='
+     +                                                    :E   
+     + :                 EEEE       E
+     +'
+      CALL PROUT(88)
+      OLINE='
+     +                                                   .-E   
+     +-:-----                       E
+     +'
+      CALL PROUT(88)
+      OLINE='
+     +                                                    :E   
+     + :                            E
+     +'
+      CALL PROUT(88)
+      OLINE='
+     +                                                      EE 
+     + :                    EEEEEEEE
+     +'
+      CALL PROUT(87)
+      OLINE='
+     +                                                       EE
+     +EEEEEEEEEEEEEEEEEEEEE   
+     +'
+      CALL PROUT(81)
+C
+C
+      CALL SKIP(3)
+C
+C
+      OLINE='
+     +                                                       U.
+     + S. S. ENTERPRISE
+     +'
+      CALL PROUT(74)
+C
+C
+      CALL SKIP(4)
+C
+C
+      OLINE='
+     +                                  For demonstrating outst
+     +anding ability as a starship captain
+     +'
+      CALL PROUT(93)
+C
+C
+      CALL SKIP(1)
+C
+C
+      OLINE='
+     +                                                Starfleet
+     + Command bestows to you 
+     +'
+      CALL PROUT(81)
+C
+C
+      CALL SKIP(1)
+      DO 8 I=1,NSKIP
+      ITEM=' '
+ 8    CALL CRAM(1)
+      CALL CRAMS1(NAME,NAMELE)
+      CALL CREND
+      CALL SKIP(1)
+C
+C
+      OLINE='
+     +                                                         
+     +  the rank of 
+     +'
+      CALL PROUT(71)
+C
+C
+      CALL SKIP(1)
+C
+C
+      OLINE='
+     +                                                       "C
+     +ommodore Emeritus"
+     +'
+      CALL PROUT(75)
+C
+C
+      CALL SKIP(1)
+      ITEM='                                      '
+      CALL CRAM(58)
+      IF(ISKILL .EQ. 4) THEN
+      ITEM=' Expert '
+      CALL CRAM(8)
+      ELSEIF(ISKILL .EQ. 5) THEN
+      ITEM='Emeritus '
+      CALL CRAM(9)
+      ELSE
+      ITEM='         '
+      CALL CRAM(9)
+      ENDIF
+      ITEM='level'
+      CALL CRAMDM(5)
+      CALL SKIP(1)
+C
+C
+      ITEM='                                                  '
+      CALL CRAM(50)
+      ITEM='    This day of '
+      CALL CRAM(16)
+C
+      DO 25 I=1,13
+      STRDAT(I)=ICHAR(BLANK)
+  25  CONTINUE
+C
+      CALL GETDAT(STRDAT(1))
+C
+      ILEN=13
+      DO 30 I=1,13
+      IF (STRDAT(ILEN).NE.ICHAR(BLANK)) GO TO 35
+      ILEN=ILEN-1
+  30  CONTINUE
+C
+  35  STRDAT(ILEN-3)=ICHAR('2')
+      STRDAT(ILEN-2)=ICHAR('0')
+C
+      DO 40 I=1,ILEN
+      CALL CRAMS1(CHAR(STRDAT(I)),1)
+  40  CONTINUE
+C
+      CALL CREND
+      CALL SKIP(1)
+C
+C
+      ITEM='                                                  '
+      CALL CRAM(50)
+      ITEM='      Your score:  '
+      CALL CRAM(19)
+C
+      CALL CRAMI(ISCORE,0)
+      CALL CREND
+      CALL SKIP(1)
+C
+C
+      ITEM='                                                  '
+      CALL CRAM(50)
+      ITEM=' Klingons per stardate:   '
+      CALL CRAM(26)
+      CALL CRAMF(PERDAT,0,2)
+      CALL CREND
+C
+      CLOSE (8)
+      LUN=0
+      RETURN
+      END

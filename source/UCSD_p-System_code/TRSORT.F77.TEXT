@@ -1,0 +1,29 @@
+      SUBROUTINE SORTKL
+$INCLUDE COMP1A2:TREKCO.F77
+      INTEGER SWITCH
+      IF(NENHER.LE.1) THEN
+      WRITE(*,'(''''\)')
+      RETURN
+      ENDIF
+      MINUS1=NENHER-1
+ 10   SWITCH=0
+      DO 20 J=1,MINUS1
+      IF(KDIST(J) .LE. KDIST(J+1)) GO TO 20
+      T=KDIST(J)
+      KDIST(J)=KDIST(J+1)
+      KDIST(J+1)=T
+      K=KX(J)
+      KX(J)=KX(J+1)
+      KX(J+1)=K
+      K=KY(J)
+      KY(J)=KY(J+1)
+      KY(J+1)=K
+      T=KPOWER(J)
+      KPOWER(J)=KPOWER(J+1)
+      KPOWER(J+1)=T
+      SWITCH=1
+ 20   CONTINUE
+      IF(SWITCH.NE.0) GO TO 10
+      WRITE(*,'(''''\)')
+      RETURN
+      END

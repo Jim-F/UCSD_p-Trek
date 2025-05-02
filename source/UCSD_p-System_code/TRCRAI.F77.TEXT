@@ -1,0 +1,47 @@
+$USES UNUMOI IN TREK2A:TRNUMI.F77
+      SUBROUTINE CRAMI(II,W)
+      INTEGER W,W1
+      CHARACTER*1 NUMBR(40)
+      COMMON/MYBUF/NUMBR
+      CHARACTER*1 NULL,BLANK
+      COMMON/CHARCO/NULL,BLANK
+      COMMON/CRMKNT/KCH
+      CHARACTER*1 NUMTMP(10)
+C
+      DO 5 I=1,10
+      NUMTMP(I)=BLANK
+   5  CONTINUE
+C
+      CALL NUMOI(II)
+C
+      ILEN=0
+      J=10
+      DO 10 I=1,10
+      IF (NUMBR(J).EQ.BLANK) GO TO 15
+      J=J-1
+      ILEN=ILEN+1
+  10  CONTINUE
+C
+  15  J=J+1
+      DO 20 I=1,ILEN
+      NUMTMP(I)=NUMBR(J)
+      J=J+1
+  20  CONTINUE
+C
+      IDIFF=0
+      IF (W.GT.ILEN) THEN
+      IDIFF=W-ILEN
+      DO 25 I=1,IDIFF
+      WRITE(1,'(A1\)') BLANK
+      KCH=KCH+1
+  25  CONTINUE
+      ENDIF
+C
+      DO 30 I=1,ILEN
+      WRITE(1,'(A1\)') NUMTMP(I)
+      KCH=KCH+1
+  30  CONTINUE
+C
+      WRITE(*,'(''''\)')
+      RETURN
+      END

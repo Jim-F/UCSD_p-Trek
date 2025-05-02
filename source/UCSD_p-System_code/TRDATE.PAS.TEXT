@@ -1,0 +1,58 @@
+UNIT DATE;
+  INTERFACE
+    TYPE 
+      INTYPE = ARRAY[0..11] OF INTEGER;
+    PROCEDURE GETDAT(VAR INARRAY:INTYPE);
+      (* THE DATE CONTAINS UP TO 12 CHARACTERS
+         AND WILL LOOK LIKE THIS WHEN RETURNED:
+         "24 June 1980" *)
+      (* ALGORITHM BY ROGER SOLES, FRANK MONACO, 
+         GEORGIA TECH *)
+  IMPLEMENTATION
+    PROCEDURE GETDAT;
+      CONST 
+            FIRSTBYTE = 21;
+            SECONDBYTE = 22;
+            START = 1;
+            FINISH = 24;
+      TYPE 
+           RANGE = START .. FINISH;
+           ARAYTYPE = PACKED ARRAY [ RANGE ] OF CHAR;
+      VAR 
+          DUMMY : ARAYTYPE;
+          HIGH, LOW : INTEGER;
+          DAY, MONTH, YEAR: INTEGER;
+          CMONTH, CDAY, CYEAR  : STRING;
+          THEDATE  : STRING;
+          I  : INTEGER;
+    BEGIN
+      UNITREAD( 4, DUMMY, 24, 2);
+      HIGH := ORD ( DUMMY [ SECONDBYTE ] ); (* GET THE DATE BYTES INTO HIGH
+                                               AND LOW *)
+      LOW := ORD ( DUMMY [ FIRSTBYTE ] );
+      DAY := ( HIGH MOD 2 ) * 16 + LOW DIV 16;
+      MONTH := LOW MOD 16; (* EXTRACT NECESSARY INFO *)
+      YEAR := HIGH DIV 2;
+      STR ( DAY, CDAY ); (* CONVERT INTEGERS TO STRINGS *)
+      STR ( YEAR, CYEAR );
+      CASE MONTH OF
+        1: CMONTH := 'Jan';
+        2: CMONTH := 'Feb';
+        3: CMONTH := 'Mar';
+        4: CMONTH := 'Apr';
+        5: CMONTH := 'May';
+        6: CMONTH := 'June';
+        7: CMONTH := 'July';
+        8: CMONTH := 'Aug';
+        9: CMONTH := 'Sept';
+        10: CMONTH := 'Oct';
+        11: CMONTH := 'Nov';
+        12: CMONTH := 'Dec'
+      END;
+      THEDATE := CONCAT ( CDAY, ' ', CMONTH, ' 19', CYEAR );
+      FOR I := 1 TO LENGTH(THEDATE) DO
+      BEGIN
+        INARRAY[I-1] := ORD(THEDATE[I]);
+      END;
+    END; (* PROCEDURE GETDATE *)
+  END.
