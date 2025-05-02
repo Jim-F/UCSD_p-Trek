@@ -1,0 +1,12 @@
+fptrek2b:
+qxboot2f2:library
+trek3b:trlib6.library
+trwait.f77
+entrsetw.f77
+entrplan.f77
+entrdeat.f77
+entrdest.f77
+entraban.f77
+entrhelp.f77
+entremex.f77
+eq

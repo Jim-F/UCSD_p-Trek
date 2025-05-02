@@ -1,0 +1,5 @@
+./mkfx XFER.ima
+#
+./encode STRTRK.TEXT
+./putx STRTRK.TEXT
+./decode STRTRK.TEXT

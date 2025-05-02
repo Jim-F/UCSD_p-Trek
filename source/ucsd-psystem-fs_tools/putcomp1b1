@@ -1,0 +1,101 @@
+./mkfx XFER.ima
+#
+./encode TREKCO.F77.TEXT
+./putx TREKCO.F77.TEXT
+./decode TREKCO.F77.TEXT
+#
+./encode TRCRAS.F77.TEXT
+./putx TRCRAS.F77.TEXT
+./decode TRCRAS.F77.TEXT
+#
+./encode TRCRAF.F77.TEXT
+./putx TRCRAF.F77.TEXT
+./decode TRCRAF.F77.TEXT
+#
+./encode TRNUMF.F77.TEXT
+./putx TRNUMF.F77.TEXT
+./decode TRNUMF.F77.TEXT
+#
+./encode TRREQU.F77.TEXT
+./putx TRREQU.F77.TEXT
+./decode TRREQU.F77.TEXT
+#
+./encode TRSTAT.F77.TEXT
+./putx TRSTAT.F77.TEXT
+./decode TRSTAT.F77.TEXT
+#
+./encode TRFREE.F77.TEXT
+./putx TRFREE.F77.TEXT
+./decode TRFREE.F77.TEXT
+#
+./encode TRSCOR.F77.TEXT
+./putx TRSCOR.F77.TEXT
+./decode TRSCOR.F77.TEXT
+#
+./encode TRCRSH.F77.TEXT
+./putx TRCRSH.F77.TEXT
+./decode TRCRSH.F77.TEXT
+#
+./encode TRLEAV.F77.TEXT
+./putx TRLEAV.F77.TEXT
+./decode TRLEAV.F77.TEXT
+#
+./encode TRSOS.F77.TEXT
+./putx TRSOS.F77.TEXT
+./decode TRSOS.F77.TEXT
+#
+./encode TRCASU.F77.TEXT
+./putx TRCASU.F77.TEXT
+./decode TRCASU.F77.TEXT
+#
+./encode TRCRME.F77.TEXT
+./putx TRCRME.F77.TEXT
+./decode TRCRME.F77.TEXT
+#
+./encode TRDEBU.F77.TEXT
+./putx TRDEBU.F77.TEXT
+./decode TRDEBU.F77.TEXT
+#
+./encode TRDRPT.F77.TEXT
+./putx TRDRPT.F77.TEXT
+./decode TRDRPT.F77.TEXT
+#
+./encode TRTIMW.F77.TEXT
+./putx TRTIMW.F77.TEXT
+./decode TRTIMW.F77.TEXT
+#
+./encode TRPLAQ.F77.TEXT
+./putx TRPLAQ.F77.TEXT
+./decode TRPLAQ.F77.TEXT
+#
+./encode TRFINI.F77.TEXT
+./putx TRFINI.F77.TEXT
+./decode TRFINI.F77.TEXT
+#
+./encode TRRAM.F77.TEXT
+./putx TRRAM.F77.TEXT
+./decode TRRAM.F77.TEXT
+#
+./encode TRDEDK.F77.TEXT
+./putx TRDEDK.F77.TEXT
+./decode TRDEDK.F77.TEXT
+#
+./encode TRCRSE.F77.TEXT
+./putx TRCRSE.F77.TEXT
+./decode TRCRSE.F77.TEXT
+#
+./encode TRMOVE.F77.TEXT
+./putx TRMOVE.F77.TEXT
+./decode TRMOVE.F77.TEXT
+#
+./encode TRIMPU.F77.TEXT
+./putx TRIMPU.F77.TEXT
+./decode TRIMPU.F77.TEXT
+#
+./encode TRGETC.F77.TEXT
+./putx TRGETC.F77.TEXT
+./decode TRGETC.F77.TEXT
+#
+./encode comp1b1.text
+./putx comp1b1.text
+./decode comp1b1.text

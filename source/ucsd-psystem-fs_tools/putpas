@@ -1,0 +1,9 @@
+./mkfx XFER.ima
+#
+./encode TRRANF.PAS.TEXT
+./putx TRRANF.PAS.TEXT
+./decode TRRANF.PAS.TEXT
+#
+./encode TRDATE.PAS.TEXT
+./putx TRDATE.PAS.TEXT
+./decode TRDATE.PAS.TEXT

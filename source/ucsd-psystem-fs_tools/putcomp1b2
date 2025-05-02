@@ -1,0 +1,109 @@
+./mkfx XFER.ima
+#
+./encode TREKCO.F77.TEXT
+./putx TREKCO.F77.TEXT
+./decode TREKCO.F77.TEXT
+#
+./encode TRATTA.F77.TEXT
+./putx TRATTA.F77.TEXT
+./decode TRATTA.F77.TEXT
+#
+./encode TREVEN.F77.TEXT
+./putx TREVEN.F77.TEXT
+./decode TREVEN.F77.TEXT
+#
+./encode TRAUTO.F77.TEXT
+./putx TRAUTO.F77.TEXT
+./decode TRAUTO.F77.TEXT
+#
+./encode TRMOVT.F77.TEXT
+./putx TRMOVT.F77.TEXT
+./decode TRMOVT.F77.TEXT
+#
+./encode TRMOVC.F77.TEXT
+./putx TRMOVC.F77.TEXT
+./decode TRMOVC.F77.TEXT
+#
+./encode TRPHOT.F77.TEXT
+./putx TRPHOT.F77.TEXT
+./decode TRPHOT.F77.TEXT
+#
+./encode TRZAP.F77.TEXT
+./putx TRZAP.F77.TEXT
+./decode TRZAP.F77.TEXT
+#
+./encode TRNOVA.F77.TEXT
+./putx TRNOVA.F77.TEXT
+./decode TRNOVA.F77.TEXT
+#
+./encode TRSNOV.F77.TEXT
+./putx TRSNOV.F77.TEXT
+./decode TRSNOV.F77.TEXT
+#
+./encode TRWARP.F77.TEXT
+./putx TRWARP.F77.TEXT
+./decode TRWARP.F77.TEXT
+#
+./encode TRSCOM.F77.TEXT
+./putx TRSCOM.F77.TEXT
+./decode TRSCOM.F77.TEXT
+#
+./encode TRSHIE.F77.TEXT
+./putx TRSHIE.F77.TEXT
+./decode TRSHIE.F77.TEXT
+#
+./encode TRLRSC.F77.TEXT
+./putx TRLRSC.F77.TEXT
+./decode TRLRSC.F77.TEXT
+#
+./encode TRPHAS.F77.TEXT
+./putx TRPHAS.F77.TEXT
+./decode TRPHAS.F77.TEXT
+#
+./encode TRHITE.F77.TEXT
+./putx TRHITE.F77.TEXT
+./decode TRHITE.F77.TEXT
+#
+./encode TRDOCK.F77.TEXT
+./putx TRDOCK.F77.TEXT
+./decode TRDOCK.F77.TEXT
+#
+./encode TRCHAR.F77.TEXT
+./putx TRCHAR.F77.TEXT
+./decode TRCHAR.F77.TEXT
+#
+./encode TRWAIT.F77.TEXT
+./putx TRWAIT.F77.TEXT
+./decode TRWAIT.F77.TEXT
+#
+./encode TRSETW.F77.TEXT
+./putx TRSETW.F77.TEXT
+./decode TRSETW.F77.TEXT
+#
+./encode TRPLAN.F77.TEXT
+./putx TRPLAN.F77.TEXT
+./decode TRPLAN.F77.TEXT
+#
+./encode TRDEAT.F77.TEXT
+./putx TRDEAT.F77.TEXT
+./decode TRDEAT.F77.TEXT
+#
+./encode TRDEST.F77.TEXT
+./putx TRDEST.F77.TEXT
+./decode TRDEST.F77.TEXT
+#
+./encode TRABAN.F77.TEXT
+./putx TRABAN.F77.TEXT
+./decode TRABAN.F77.TEXT
+#
+./encode TRHELP.F77.TEXT
+./putx TRHELP.F77.TEXT
+./decode TRHELP.F77.TEXT
+#
+./encode TREMEX.F77.TEXT
+./putx TREMEX.F77.TEXT
+./decode TREMEX.F77.TEXT
+#
+./encode comp1b2.text
+./putx comp1b2.text
+./decode comp1b2.text

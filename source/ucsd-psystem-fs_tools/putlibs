@@ -1,0 +1,9 @@
+./mkfx XFER.ima
+#
+./encode lib3a.text
+./putx lib3a.text
+./decode lib3a.text
+#
+./encode lib3b.text
+./putx lib3b.text
+./decode lib3b.text

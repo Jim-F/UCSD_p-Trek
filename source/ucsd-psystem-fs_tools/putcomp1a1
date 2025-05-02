@@ -1,0 +1,69 @@
+./mkfx XFER.ima
+#
+./encode TREKCO.F77.TEXT
+./putx TREKCO.F77.TEXT
+./decode TREKCO.F77.TEXT
+#
+./encode TRTREK.F77.TEXT
+./putx TRTREK.F77.TEXT
+./decode TRTREK.F77.TEXT
+#
+./encode TRKICK.F77.TEXT
+./putx TRKICK.F77.TEXT
+./decode TRKICK.F77.TEXT
+#
+./encode TRLDCM.F77.TEXT
+./putx TRLDCM.F77.TEXT
+./decode TRLDCM.F77.TEXT
+#
+./encode TRPREL.F77.TEXT
+./putx TRPREL.F77.TEXT
+./decode TRPREL.F77.TEXT
+#
+./encode TRPROU.F77.TEXT
+./putx TRPROU.F77.TEXT
+./decode TRPROU.F77.TEXT
+#
+./encode TRCHEW.F77.TEXT
+./putx TRCHEW.F77.TEXT
+./decode TRCHEW.F77.TEXT
+#
+./encode TRSKIP.F77.TEXT
+./putx TRSKIP.F77.TEXT
+./decode TRSKIP.F77.TEXT
+#
+./encode TRCHOO.F77.TEXT
+./putx TRCHOO.F77.TEXT
+./decode TRCHOO.F77.TEXT
+#
+./encode TRTHAW.F77.TEXT
+./putx TRTHAW.F77.TEXT
+./decode TRTHAW.F77.TEXT
+#
+./encode TRGETF.F77.TEXT
+./putx TRGETF.F77.TEXT
+./decode TRGETF.F77.TEXT
+#
+./encode TRPKFN.F77.TEXT
+./putx TRPKFN.F77.TEXT
+./decode TRPKFN.F77.TEXT
+#
+./encode TRIRA8.F77.TEXT
+./putx TRIRA8.F77.TEXT
+./decode TRIRA8.F77.TEXT
+#
+./encode TRPROM.F77.TEXT
+./putx TRPROM.F77.TEXT
+./decode TRPROM.F77.TEXT
+#
+./encode TRSCAN.F77.TEXT
+./putx TRSCAN.F77.TEXT
+./decode TRSCAN.F77.TEXT
+#
+./encode TRCROP.F77.TEXT
+./putx TRCROP.F77.TEXT
+./decode TRCROP.F77.TEXT
+#
+./encode comp1a1.text
+./putx comp1a1.text
+./decode comp1a1.text
