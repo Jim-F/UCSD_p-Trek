@@ -1,10 +1,10 @@
 ## Preparing the UCSD p-System disk images
 
-The Bitsavers Fortran-only p-System distribution floppy images (as well as the Pascal-only images from Yahoo) are \*.IMD floppy image files that had originally been archived using Dave Dunfield's ImageDisk program. I have converted these into "raw" floppy images using both Simon Owen's command-line disk image utility SAMdisk ( http://simonowen.com/samdisk/ ) and more recently (and more conveniently) using the software that accompanies the "HxC Floppy Emulator" ("HxCFloppyEmulator_soft.zip" downloadable from https://hxc2001.com/download/floppy_drive_emulator/ ). The latter archive contains a (Windows) graphical program "HxCFloppyEmulator.exe". From the HxCFloppyEmulator main window, click the "Load" button at the top of the column of buttons at the left side of the window (labelled "Load a floppy file image"). Then navigate to and select the \*.IMD file you want to convert. Then click the "Export" button (5th button down, labelled "Export/save the loaded file image"), and in the "Save as type" drop-down, choose the 5th selection "IMG file (RAW sector file format) (\*.img). The extension ".img" is the default, but you can change this to whatever you like (I use ".ima" for my raw disk image files).
+The Bitsavers Fortran-only p-System distribution floppy images (as well as the Pascal-only images from Yahoo) are \*.IMD floppy image files that had originally been archived using Dave Dunfield's ImageDisk program. I have converted these into "raw" floppy images using both Simon Owen's command-line disk image utility SAMdisk ( http://simonowen.com/samdisk/ ) and more recently (and more conveniently) using the software that accompanies the "HxC Floppy Emulator" ("HxCFloppyEmulator_soft.zip" downloadable from https://hxc2001.com/download/floppy_drive_emulator/ ). The latter archive contains a (Windows) graphical program "HxCFloppyEmulator.exe". From the HxCFloppyEmulator main window, click the "Load" button at the top of the column of buttons at the left side of the window (labelled "Load a floppy file image"). Then navigate to and select the \*.IMD file you want to convert. Then click the "Export" button (5th button down, labelled "Export/save the loaded file image"), and in the "Save as type" drop-down, choose the 5th selection "IMG file (RAW sector file format) (\*.img)". The extension ".img" is the default, but you can change this to whatever you like (I use ".ima" for my raw disk image files).
 
 ## Increasing the size of the floppy images
 
-The p-System distribution disks from IBM were single-sided 160KB floppies (40 tracks or "cylinders", 8 sectors per track, containing a total of 320 512-byte blocks). This was the smallest floppy disk size ever supported by the IBM PC, and was the only floppy format available at its introduction in 1981. In 1982, BIOS and DOS changes added support for double-sided 320KB floppies (40 tracks, 8 sectors per track, totalling 640 512-byte blocks). Later versions of DOS supported 9 sector-per-track disks (180K single-sided or 360K double-sided).
+The p-System distribution disks from IBM were single-sided 5 1/4 inch 160KB floppy disks (with 40 tracks or "cylinders", 8 sectors per track, containing a total of 320 512-byte blocks). This was the smallest floppy disk size ever supported by the IBM PC, and was the only floppy format available at its introduction in 1981. In 1982, BIOS and DOS changes added support for double-sided 320KB floppies (40 tracks, 8 sectors per track, totalling 640 512-byte blocks). Later versions of DOS supported 9 sector-per-track disks (180KB single-sided or 360KB double-sided).
 
 My first experiment was to see if I could create larger floppy images (whether bootable or not) that would work properly with the p-System. You can create "blank" disk images of any size using the "dd" utility in Linux (or on Windows using WSL, Msys2, Cygwin, etc.), e.g.:
 
@@ -19,7 +19,7 @@ My first experiment was to see if I could create larger floppy images (whether b
     640+0 records out
     327680 bytes (328 kB, 320 KiB) copied, 0.0066677 s, 49.1 MB/s
 
-A blank image created as above can be attached to the PCE emulator via the D:\PCE\data\pce-ibmpc.inc configuration include file (or its equivalent location and name in your PCE installation) as a disk of type "image" and with the appropriate c[ylinder], h[ead], and s[ector] parameters (notice that the "head" parameter is either h=1 for a single-sided 160KB image or h=2 for a double-sided 320KB image):
+A blank image created as above can be attached to the PCE emulator via the D:\PCE\data\pce-trek.inc configuration include file (or D:\PCE\data\pce-ibmpc.inc or its equivalent location and name in your PCE installation) as a disk of type "image" and with the appropriate c[ylinder], h[ead], and s[ector] parameters (notice that the "head" parameter is either h=1 for a single-sided 160KB image or h=2 for a double-sided 320KB image):
 
 ####
     if (cfg.fdd >= 3) {
@@ -49,7 +49,7 @@ A blank image created as above can be attached to the PCE emulator via the D:\PC
 
 The p-System does come with a low-level disk formatting utility (DISKFORMAT.CODE on the UTILITY disk), but this cannot be used with emulated floppy images, and is not needed in any case. The "F(ile"r on the Command Menu has a "Z(ero" sub-command, which places directory information and a volume label on a blank disk (more-or-less equivalent to "mkfs" in Unix/Linux).
 
-Floppy "volumes" can be specified to the p-System Filer by a volume number as well as, or instead of, a volume name. Floppy positions 1, 2, 3, and 4 in the PCE configuration file are known to the Filer as volumes #4, #5, #9, and #10, respectively. Volume #4 is always the boot disk (and therfore must be bootable; floppies in other positions may or may not be bootable). So the disk images SSVOL.ima and DSVOL.ima in the above PCE configuration-file excerpt will be accessible from the p-System Filer as volumes #9 and #10 respectively.
+Floppy "volumes" can be specified to the p-System Filer by a volume number as well as, or instead of, a volume name. Floppy positions 1, 2, 3, and 4 in the PCE configuration file are known to the Filer as volumes #4, #5, #9, and #10, respectively. Volume #4 is always the boot disk (and therfore must be bootable; floppies in other positions may or may not be bootable). So the disk images SSVOL.ima and DSVOL.ima in the above D:\PCE\data\\*.inc configuration include file excerpt will be accessible from the p-System Filer as volumes #9 and #10 respectively.
 
 An entirely blank disk created by "dd" as above will not initially show up as being "on-line" in the Filer. So, for instance, if you have PCE configured with SYSTEM2.ima in floppy "drive" 1, nothing in floppy drive 2, blank SSVOL.ima in floppy drive 3 (h=1 !), and blank DSVOL.ima in floppy drive 4 (h=2 !), the Filer will initially show (in response to the "V(ols" sub-command):
 
@@ -117,7 +117,7 @@ In the Filer, the "L(dir" sub-command for each of the two empty disks shows:
 
 Note: the ":" at the end of the volume name is **required** with the "L(dir" sub-command; it was optional (i.e., provided automatically if absent) with the "Z(ero" sub-command.
 
-Warning: It is possible to create and attach (in PCE) "custom" disk sizes, such as a 640K (1280 block) floppy with c/h/s = 80/2/8. The Filer will even initialize ("Z(ero") such a disk and report 640K as being available. However, attempting to "T(rans"fer (copy) files to such a disk will fail at the 640-block (320KB) limit. Another limitation is that both the methods I've discovered to transfer data into the PCE/p-System require using a "single-sided" c/h/s = 40/1/8 160KB floppy image to shuttle files into the emulator (see below).
+Warning: It is possible to create and attach (in PCE) "custom" disk sizes, such as a 640KB (1280 block) floppy with c/h/s = 80/2/8. The Filer will even initialize ("Z(ero") such a disk and report 640KB as being available. However, attempting to "T(rans"fer (copy) files to such a disk will fail at the 640-block (320KB) limit. Another limitation is that both the methods I've discovered to transfer data into the PCE/p-System require using a "single-sided" c/h/s = 40/1/8 160KB floppy image to shuttle files into the emulator (see below).
 
 ## Making a larger (640-block) disk bootable
 
@@ -183,7 +183,7 @@ The above techniques have been used to create several 320KB (640-block "double-s
 
 Note: BOOT2F2.ima and TRTREK.ima are not "packed" disks. They both contain a 121-block "hole" (the exact size of SYSTEM.PASCAL) at the beginning of the disk. This "hole" is necessary because of a peculiarity of the Fortran I/O system, discussed below.
 
-By the way, in addition to the "normal" game play (with automatic startup) via PCE floppy configuration TRTREK.ima, TREK3A.ima, TREK3B.ima (and nothing) attached to PCE drives 1, 2, 3, 4 respectively, and started via "run-trek.bat" in D:\PCE (or whatever your installation directory is); it is also possible to start the game program with disks BOOT2F2.ima, TREK3A.ima, TREK3B.ima and TREK2A.ima attached to PCE flopppy drives 1, 2, 3, and 4 respectively and started via (the original) "run-mda.bat". In the latter case, after the p-System boots, from the Command Menu, type:
+By the way, in addition to the "normal" game play (with automatic startup) via PCE floppy configuration TRTREK.ima, TREK3A.ima, TREK3B.ima (and nothing) attached to PCE drives 1, 2, 3, 4 respectively, and started via "run-trek.bat" (invoking ".\pce-trek.cfg" and ".\data\pce-trek.inc") in D:\PCE (or whatever your installation directory is); it is also possible to start the game program with disks BOOT2F2.ima, TREK3A.ima, TREK3B.ima and TREK2A.ima attached to PCE flopppy drives 1, 2, 3, and 4 respectively and started via (the original) "run-mda.bat" (invoking ".\pce-5150.cfg" and ".\data\pce-ibmpc.inc"; all the above configuration and configuration include files, corresponding to the 20250420 version of PCE, are provided in this repository in the ../config and ../config/data subdirectories). In the latter case, after the p-System boots, from the Command Menu, type:
 
 ####
     x
@@ -193,7 +193,7 @@ This executes the file TREK2:TRTREK.F77.CODE (the \*.CODE extension is supplied 
 
 ## Getting files into the emulated UCSD p-System: First try: the DOS Filer
 
-The next challenge was figuring out how to get files into the p-System. Using the emulated serial port (via "REMIN:") was not reliable, as well as being painfully slow. After some Google searching, I settled for a while on using WinImage on Windows, together with a DOS-hosted version of the p-System I downloaded from http://pascal.hansotten.com/ucsd-p-system/ms-dos-hosted-p-system/ . I got that running under MS-DOS 6.22 on **another** emulator (PCem "vNext" from https://mirror.wiseglobalsolutions.com/pcem/ , a 2024 build), this one emulating an "XT-286" (yes, that was a thing -- Model 5162). The 1984 (IV 2.1) version of the DOS-hosted p-System has someting called the "DOS Filer", which allowed transfer of files to and from the DOS host. WinImage allowed me to "inject" (Image->Inject...) source files into a 1.44 MB floppy image, which can then be "inserted" (Disc->Change drive B:...) into PCem. Those source files could then be transferred to a 160KB p-System "volume" image ("XFER.VOL", compatible with both the DOS-hosted p-System and the standalone p-System on PCE) on the hard disk containing the DOS-hosted p-System (D:\psys21). The executable is PSYSTEM\.COM, and you start it up by typing, e.g., "psystem psystem.vol xfer.vol".
+The next challenge was figuring out how to get files into the p-System. Using the emulated serial port (via "REMIN:") was not reliable, as well as being painfully slow. After some Google searching, I settled for a while on using WinImage on Windows, together with a DOS-hosted version of the p-System I downloaded from http://pascal.hansotten.com/ucsd-p-system/ms-dos-hosted-p-system/ . I got that running under MS-DOS 6.22 on **another** emulator (PCem "vNext" from https://mirror.wiseglobalsolutions.com/pcem/ , a 2024 build), this one emulating an "XT-286" (yes, that was a thing -- Model 5162). The 1984 (IV 2.1) version of the DOS-hosted p-System has someting called the "DOS Filer", which allowed transfer of files to and from the DOS host. WinImage allowed me to "inject" (Image->Inject...) source files into a 1.44 MB floppy image, which can then be "inserted" (Disc->Change drive B:...) into PCem. Those source files could then be transferred, using the DOS Filer, to a 160KB p-System "volume" image ("XFER.VOL", compatible with both the DOS-hosted p-System and the standalone p-System on PCE) on the hard disk containing the DOS-hosted p-System (D:\psys21). The DOS executable is PSYSTEM\.COM, and you start it up by typing, e.g., "psystem psystem.vol xfer.vol".
 
 <p align="center">
 <img src="../screenshots/DOS-hosted-p-System/Startup_1.jpg" width="95%">
@@ -211,7 +211,7 @@ The DOS Filer is a program on the PSYSTEM.VOL boot volume ("DOSFILER.CODE"):
 <img src="../screenshots/DOS-hosted-p-System/Dosfiler_1.jpg" width="95%">
 </p>
 
-It can transfer files, one at a time, from the 1.44 MB floppy (in DOS) to the 160KB volume image (in the p-System). NOTE: Any text files being transferred into the DOS-hosted p-System by means of the DOS Filer need to have DOS line endings (CRLF). Start the DOS Filer up from the Command Menu by typing "X" ("X(ecute"):
+It can transfer files, one at a time, from the 1.44 MB floppy (in DOS) to the 160KB volume image (in the p-System). NOTE: Any text files being transferred into the DOS-hosted p-System by means of the DOS Filer need to have DOS line endings (CRLF). Start the DOS Filer up from the Command Menu by typing "x" ("X(ecute"):
 
 <p align="center">
 <img src="../screenshots/DOS-hosted-p-System/Dosfiler_2.jpg" width="95%">
@@ -220,7 +220,7 @@ It can transfer files, one at a time, from the 1.44 MB floppy (in DOS) to the 16
 <img src="../screenshots/DOS-hosted-p-System/Dosfiler_3.jpg" width="95%">
 </p>
 
-Type "F" ("F(from DOS") to initiate a source file transfer from B: (in DOS) to XFER: (in the p-System):
+Type "f" ("F(from DOS") to initiate a source file transfer from B: (in DOS) to XFER: (in the p-System):
 
 <p align="center">
 <img src="../screenshots/DOS-hosted-p-System/Dosfiler_4.jpg" width="95%">
@@ -232,7 +232,7 @@ These transfers always seem to end with the "I/O Error 26: Illegal Operation" me
 <img src="../screenshots/DOS-hosted-p-System/Dosfiler_5.jpg" width="95%">
 </p>
 
-Finally, after the p-System is "H(alt"ed, XFER.VOL can be copied (in DOS) to the 1.44 MB floppy image and, after the floppy is "ejected" from PCem (Disc->Eject drive B:), WinImage can be used again to extract (Image->Extract) XFER.VOL into the D:\PCE (or wherever) PCE directory for attachment to the standalone p-System.
+Finally, after the p-System is "H(alt"ed, XFER.VOL can be copied (in DOS) to the 1.44 MB floppy image and then, after the floppy is "ejected" from PCem (Disc->Eject drive B:), WinImage can be used again to extract (Image->Extract) XFER.VOL into the D:\PCE (or wherever) PCE directory for attachment to the standalone p-System.
 
 So that was cumbersome, but worked "reasonably" well. However, the transfer occasionally inserted stray bytes into a text (Fortran source) file which would cause problems, and necessitated checking each file in the p-System text editor. (Only the "Edvance" editor on the DOS-hosted version actually showed these stray characters; they were invisible in the standalone p-System's editor. You can see one of these stray characters just to the left of the cursor in the screenshot below. The strays almost always appeared in exactly the same location, for some reason.)
 
