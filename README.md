@@ -131,9 +131,6 @@ Just double-click the D:\PCE\run-trek.bat file (or run it from a Command Prompt 
 Answer the initial questions, and then play the game! Detailed instructions are in the file STRTRK.TEXT (resident on the p-System boot disk TRTREK: and also in the "source" subdirectory below). You can use the p-System "F(ile)"r (after exiting the game; see below) to "T(rans"fer the instructions to the "CONSOLE:" or the "PRINTER:", but it's probably easier to read the instructions outside of the p-System itself.
 
 <p align="center">
-<img src="screenshots/Trek/Super_Star_Trek.jpg" width="95%">
-</p>
-<p align="center">
 <img src="screenshots/Trek/Super_Star_Trek2.jpg" width="95%">
 </p>
 
