@@ -72,7 +72,7 @@ The two Pascal source files are handled as a "special case".
 
 The entire process is rather tedious and error-prone, but is greatly facilitated by the existence of p-System scripts. See the "p-System Users' Guide", p. 2-22 (p. 124 in the PDF) heading "Monitor". It isn't actually necessary to use "M(on"itor to create a script; you can just use a text editor to create such a script file (though the resulting text file must be "encode"d via ucsdpsys_text, on Linux, before being placed on XFER.ima for transfer to the p-System -- the provided Linux shell scripts you will copy to "~/ucsd_p-trek" will do this automatically).
 
-## Populating COMP1A1.ima and COMP1A2.ima with source
+## Populating COMP1A1.ima and COMP1A2.ima with source and compile scripts
 
 ####
     On Windows, in source code directory (D:\UCSD_p-Trek\source\UCSD_p-System_code):
@@ -124,12 +124,17 @@ The entire process is rather tedious and error-prone, but is greatly facilitated
     
     From the p-System Command Menu:
     zCOMP1A2:       (zero COMP1A2:)
-    . . .
+    Destroy COMP1A2: ? y
+    Duplicate dir ? n
+    Are there 640 blks on the disk ? (Y/N) y
+    New vol name ? COMP1A2:
+    COMP1A2: correct ? y
+    COMP1A2: zeroed
 
-    Copy the 1A1 source set (and compile script)
-    from XFER: to COMP1A1:. (This will be repeated
-    after putting the 1A2 code set and script
-    on XFER:)
+    Copy the 1A1 source set (and corresponding compile script)
+    from XFER: to COMP1A1:. (This will be repeated with
+    COMP1A2: after putting the 1A2 code set and
+    corresponding compile script on XFER:)
     
     t
     Transfer what file ? XFER:?
@@ -176,7 +181,7 @@ The entire process is rather tedious and error-prone, but is greatly facilitated
     qh  (Halt p-System)
     close PCE window
 
-## Populating COMP1B1.ima and COMP1B2.ima with source
+## Populating COMP1B1.ima and COMP1B2.ima with source and compile scripts
 
 This mirrors the process described above for COMP1A1: and COMP1A2:,
 now applied to COMP1B1: and COMP1B2:
