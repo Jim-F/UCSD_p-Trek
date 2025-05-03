@@ -46,7 +46,7 @@ from D:\UCSD_p-Trek\source\build_disk_images
     UTILF2.ima
     XFER.ima
 
-The Fortran 77 source files are partitioned into 4 sets (1A1, 1A2, 1B1 and 1B2 -- there were originally just two sets 1A and 1B, but they had to be further subdivided as the collection got bigger). These sets are transferred (via XFER.ima) to and compiled (on the p-System) on four separate floppy volumes (COMP1A1:, COMP1A2:, COMP1B1:, and COMP1B2 -- the floppies each must have enough room to hold the source files **and** their corresponding object files). Following compilation, the object code is copied to two volumes (object files from COMP1A1: and COMP1A2: go to TREK2A:, and object files from COMP1B1: and COMP1B2: go to TREK2B:) 
+The Fortran 77 source files are partitioned into 4 source-code sets (1A1, 1A2, 1B1 and 1B2 -- there were originally just two sets 1A and 1B, but they had to be further subdivided as the collection got bigger). These sets are transferred (via XFER.ima) to and compiled (on the p-System) on four separate floppy volumes (COMP1A1:, COMP1A2:, COMP1B1:, and COMP1B2 -- the floppies each must have enough room to hold the source files **and** their corresponding object files). Following compilation, the object code is copied to two volumes (object files from COMP1A1: and COMP1A2: go to TREK2A:, and object files from COMP1B1: and COMP1B2: go to TREK2B:) 
 
 Finally, with all the object code mounted on volumes TREK2A: and TREK2B:, the object libraries are created (one volume at a time) on TREK3A: and TREK3B: .
 
@@ -92,14 +92,14 @@ The entire process is rather tedious and error-prone, but is greatly facilitated
     extract the source-code archive:
     tar xvf trek.tar
     
-    (Still on Linux, in ~/ucsd_p-trek) put the 1A1 code set
+    (Still on Linux, in ~/ucsd_p-trek) put the 1A1 source-code set
     (plus p-System script comp1a1.text) on XFER.ima
     by running shell script:
     ./putcomp1a1
     
     On Windows, in the PCE directory (D:\PCE, or whatever
     you've called it), grab the XFER: volume containing the 1A1
-    source code set plus the comp1a1.text script from Linux):
+    source-code set plus the comp1a1.text script from Linux):
     scp .../ucsd_p-trek/XFER.ima .
     
     On Windows, edit the configuration include file
@@ -136,10 +136,11 @@ The entire process is rather tedious and error-prone, but is greatly facilitated
     COMP1A2: correct ? y
     COMP1A2: zeroed
 
-    Copy the 1A1 source set (and corresponding compile script)
-    from XFER: to COMP1A1:. (This will be repeated with
-    COMP1A2: after putting the 1A2 code set and
-    corresponding compile script on XFER:)
+    Copy the 1A1 source-code set (and the corresponding
+    compile script) from XFER: to COMP1A1:.
+    (This will be repeated with COMP1A2: after putting
+    the 1A2 source-code set and the corresponding
+    compile script on the XFER: floppy.)
     
     t
     Transfer what file ? XFER:?
@@ -271,7 +272,7 @@ now applied to COMP1B1: and COMP1B2:
     qh  (Halt p-System)
     close PCE window
 
-Each of the populated source volumes COMP1A1:, COMP1A2:. COMP1B1:, and COMP1B2 must now be compiled, one at a time, with the COMP\*.ima floppy image attached (in PCE) to floppy drive #4 (p-System volume #10) and the (pre-existing) code sets on TREK2A.ima and TREK2B.ima attached (in PCE) to floppy drives #2 (p-System volume #5) and #3 (p-System volume #9), respectively. The boot drive (PCE floppy drive #1, p-System volume #4) is BOOT2F2.ima in all cases.
+Each of the populated source volumes COMP1A1:, COMP1A2:. COMP1B1:, and COMP1B2 must now be compiled, one at a time, with the COMP\*.ima floppy image attached (in PCE) to floppy drive #4 (p-System volume #10) and the (pre-existing) object-code sets on TREK2A.ima and TREK2B.ima attached (in PCE) to floppy drives #2 (p-System volume #5) and #3 (p-System volume #9), respectively. The boot drive (PCE floppy drive #1, p-System volume #4) is BOOT2F2.ima in all cases.
 
 ## Compiling the source files on COMP1A1.ima
 
