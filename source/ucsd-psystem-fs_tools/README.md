@@ -1,6 +1,6 @@
 ## Rebuilding the entire "Super Star Trek" game from source
 
-This process assumes that you have the ucsd-psystem-fs tools (from https://github.com/jdykstra/ucsd-psystem-fs) installed and built on a Linux system (say, in ~/ucsd-psystem-fs-master). You should also have downloaded this GitHub archive and extracted the Zip file on a Windows system (say, into directory D:\UCSD_p-Trek), and have copied (via scp or a similar file-transfer program) the following files from Windows in D:\UCSD_p-Trek\source\ucsd-psystem-fs_tools to your Linux system into a working directory (say, ~/ucsd_p-trek):
+This process assumes that you have the ucsd-psystem-fs tools (from https://github.com/jdykstra/ucsd-psystem-fs) downloaded, extracted, and built on a Linux system (say, in ~/ucsd-psystem-fs-master). You should also have downloaded this GitHub archive and extracted the Zip file on a Windows system (say, into directory D:\UCSD_p-Trek), and have copied (via scp or a similar file-transfer program) the following files from Windows in D:\UCSD_p-Trek\source\ucsd-psystem-fs_tools to your Linux system into a working directory (say, ~/ucsd_p-trek):
 
 ####
     comp1a1.text
@@ -23,7 +23,7 @@ This process assumes that you have the ucsd-psystem-fs tools (from https://githu
     putx
     XFER.ima
 
-It also assumes that you have PCE installed on Windows (say, in D:\PCE), have created the configuration file D:\PCE\pce-trek.cfg and configuration include file D:\PCE\data\pce-trek.inc . You will be making (temporary) modifications to pce-trek.inc during the course of the rebuild to change, add, and remove floppy images. You also should have copied **all** the disk images provided here to D:\PCE (normally only the first three are needed just to play the game; the others are only required for this rebuild process):
+It also assumes that you have PCE installed on Windows (say, in D:\PCE) and have created the configuration file D:\PCE\pce-trek.cfg and configuration include file D:\PCE\data\pce-trek.inc (or made the required changes to D:\PCE\pce-5150.cfg and D:\PCE\data\pce-ibmpc.inc). You will be making (temporary) modifications to the configuration include file pce-trek.inc (or pce-ibmpc.inc) during the course of the rebuild to change, add, and remove floppy images. You also should have copied **all** the disk images provided here to D:\PCE (normally only the first three are needed just to play the game; the others are only required for this rebuild process):
 
 from D:\UCSD_p-Trek\disk_images
 
