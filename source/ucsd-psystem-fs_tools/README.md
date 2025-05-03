@@ -72,22 +72,27 @@ The two Pascal source files are handled as a "special case".
 
 The entire process is rather tedious and error-prone, but is greatly facilitated by the existence of p-System scripts. See the "p-System Users' Guide", p. 2-22 (p. 124 in the PDF) heading "Monitor". It isn't actually necessary to use "M(on"itor to create a script; you can just use a text editor to create such a script file (though the resulting text file must be "encode"d via ucsdpsys_text, on Linux, before being placed on XFER.ima for transfer to the p-System -- the provided Linux shell scripts you will copy to "~/ucsd_p-trek" will do this automatically).
 
-## Populating COMP1A1.ima and COMP1A2.ima with source and compile scripts
+## Populating COMP1A1.ima and COMP1A2.ima with source code and compile scripts
 
 ####
-    On Windows, in source code directory (D:\UCSD_p-Trek\source\UCSD_p-System_code):
+    On Windows, in the source code directory you've downloaded from this
+    repository (to, say, D:\UCSD_p-Trek\source\UCSD_p-System_code),
+    create an archive containing all the p-System Fortran 77 (and Pascal)
+    "Super Star Trek" source code:
     tar cvf trek.tar TR*.TREK
     (or use your favorite archiver: Zip, etc.)
     
-    Copy the archive to your working directory on Linux, e.g.:
-    scp junk.tar user@192.168.1.x:/home/user/ucsd_p-trek/
+    Copy the source-code archive to your working directory
+    on Linux (containing the ucsd-psystem-fs_tools shell scripts
+    and the p-System compile scripts), e.g.:
+    scp trek.tar user@192.168.1.x:/home/user/ucsd_p-trek/
     
     On Linux, in ~/ucsd_p-trek (or whatever you're calling your
-    working directory containing the ucsd-psystem-fs_tools shell scripts,
+    working directory containing the ucsd-psystem-fs_tools shell scripts),
     extract the source-code archive:
     tar xvf trek.tar
     
-    (Still on Linux, in ~/ucsd_p-trek)) put the 1A1 code set
+    (Still on Linux, in ~/ucsd_p-trek) put the 1A1 code set
     (plus p-System script comp1a1.text) on XFER.ima
     by running shell script:
     ./putcomp1a1
@@ -181,7 +186,7 @@ The entire process is rather tedious and error-prone, but is greatly facilitated
     qh  (Halt p-System)
     close PCE window
 
-## Populating COMP1B1.ima and COMP1B2.ima with source and compile scripts
+## Populating COMP1B1.ima and COMP1B2.ima with source code and compile scripts
 
 This mirrors the process described above for COMP1A1: and COMP1A2:,
 now applied to COMP1B1: and COMP1B2:
